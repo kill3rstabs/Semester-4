@@ -1,0 +1,9 @@
+read -p 'Please input your name: ' name
+read -p 'Please input your Degree Discipline: ' deg
+read -p 'Please input your batch number: ' batchno
+read -p 'Please input your course title: ' courseTitle
+
+echo "Your name is " $name
+echo "Your degree is " $deg
+echo "Batch Number: " $batchno
+echo "Course Title" $courseTitle

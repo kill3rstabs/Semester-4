@@ -1,0 +1,17 @@
+i=0
+max=0
+min=99999999
+for((i=0;$i<5;((i++))))
+do
+read -p 'Enter the number to check wether its min or max: ' num
+if((num<min))
+then
+min=$num
+fi
+if((num>max))
+then
+max=$num
+fi
+done
+echo "Max: " $max
+echo "Min: " $min

@@ -1,0 +1,4 @@
+#! /bin/bash
+mv *.sh shelldir
+mv *.c cdir
+mv *.jpg jpgdir

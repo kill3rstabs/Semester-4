@@ -1,0 +1,17 @@
+read -p 'Enter the number to check wether it is prime or not: ' var1
+i=1
+count=0
+while((i<=var1))
+do
+if(($var1%i==0))
+then
+((count++))
+fi
+((i++))
+done
+if((count==2 || $var1==1))
+then
+echo "It is a prime number"
+else
+echo "It's not a prime number"
+fi

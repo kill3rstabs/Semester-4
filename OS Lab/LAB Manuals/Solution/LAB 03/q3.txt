@@ -1,0 +1,8 @@
+read -p 'Enter the number to check wether it is positive or not' number
+
+if(($number<0))
+then
+echo "Number is negative"
+else
+echo "Number is positive"
+fi

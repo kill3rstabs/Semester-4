@@ -1,0 +1,137 @@
+Process Control
+-end,abort
+-load,execute
+-create process,terminate process
+-get process attributes,set process attributes
+-wait for time
+-wait event,signal event
+-allocate and free memory
+
+File Manuplation
+- create file,delete file
+- open,close
+-read,write,repostion
+-get file attributes,set file attributes
+
+Device manuplation 
+-request device,release device
+-read,write,reposition
+-get device attributes,set device attributes
+-logically attach or detach device (example: os needs to understand that device has been attached and it is ready to use,detach : safely remove hardware)
+
+Information Maintainance
+-get time or date,set time or date
+-get system data,set system data
+-get process,file or device attributes
+-set process,file or device attributes
+
+communications 
+-create,delete communication connection
+-send,recieve messages
+-transfer status information
+-attach or detach remote devices
+
+Protection
+-set permission,get permission
+-manuplates the permission settings of resources such as files and disks
+
+System programs
+-system programs provide a convineint enviorment for program dev and execution
+-some are simply user interfaces to system calls 
+-0thers are considebrally more complex
+
+System programs can be divided into following categories:
+
+FILE MANAGEMENT:
+- Create
+-delete
+-copy
+-rename
+-print
+-dump
+-List,and generally manipulate files and directories
+
+Status information:
+Ask the system for:
+-Date,time
+-Amount of available memory or disk space
+-Number of users
+-Detailed performance
+-Logging ,and debugging information etc
+
+File modification
+-several text editors may be available to create and modify the content of files stored on disk or other storage devices
+-There maybe also special commands to search contents of files or perform transformations of text.
+
+Programming-language support
+-compuilers
+-assemblers
+-debuggers
+-Interpreters
+for common programming languages(such as c,c++,Java,Visual Basic,and PERL)
+Program Loading and Execution 
+Once a program is assembled  it must be loaded into memory to be executed
+
+Ther system may provide:
+-Absolute loaders
+-Relocate loaders
+-Linkage editors
+-Overlay Loaders
+
+Debugging systems for either higher-level language or machine language are needed as well
+
+Communications:
+These programs provide the mechanism for:
+-Creating virtual connections among processes,users
+and computer systems.
+-Allowing users to send messages to one another's screens
+-To browse webpages
+-To send electronic-mail messages
+-To log in remotely or to transfer files from one machine to another.
+
+Additional application programs are provided with system programs
+-Web browsers
+-word processors
+-spreadsheets
+-database systems
+-games
+
+OS Design and Implementation:
+
+Design Goals:
+1st problem:
+- choice of hardware
+-Type of system
+Beyond this highest design level,the requirements are much harder to specify
+
+Requirements:
+-User Goals
+-System Goals
+
+User Requirements:
+The system should be:
+Convenient to use,Easy to learn and use, Relaible, safe and fast
+
+Designer Requirements:(System Goals)
+Easy to design,implement maintain,operate.It should be flexible,reliable error free
+
+Mechanism and Policies:
+
+MEchanism determine how to do something
+Policies determine what will be done.
+
+One important principle is the sepration of policy from mechanism
+
+-how to allocate resource is your mechanism 
+- and wether to allocate resources or not is policy
+
+Implementation:
+-Once an operating system is designed,it must be implemented.
+-Traditionally,operating systems have been written in assembly languages
+-Now however,they are most commonly written in higher-level languages such as c or c++
+
+Advantages of writing in high level languages:
+-The code can be written faster
+-It is more compact
+-It is easier to understand and debug
+-It is easier to port
