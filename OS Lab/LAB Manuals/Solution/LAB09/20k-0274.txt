@@ -1,0 +1,104 @@
+-----------------------------------___TASK1---------------------------------------
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+int icecreams;
+sem_t lock;
+void* contest(void* pid);
+int main()
+{
+	sem_init(&lock,0,1);
+	icecreams=4;
+	int p1=1,p2=2,p3=3;
+	pthread_t customers[3];
+	for(int i=0;i<icecreams;i++){
+		pthread_create(&customers[0],0,contest,&p1);
+		pthread_create(&customers[1],0,contest,&p2);
+		pthread_create(&customers[2],0,contest,&p3);
+	}
+	pthread_join(customers[0],0);
+	pthread_join(customers[1],0);
+	pthread_join(customers[2],0);	
+}
+
+void* contest(void* pid)
+{
+	int *person=(int*)pid;
+	printf("My ID :%d Counting Money \n",*person);
+	sleep(1);
+	sem_wait(&lock);
+	if(icecreams==0)
+	{
+		printf("No More IceCreams\n");
+		exit(0);
+	}
+	icecreams--;
+	printf("My ID :%d Eating\n",*person);
+	sleep(1);
+	sem_post(&lock);
+	printf("My ID :%d Exiting \n",*person);
+	
+}	 
+
+
+--------------------------------------------____TASK2---------------------------------------------------------
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+sem_t weighting;
+sem_t checking;
+sem_t boarding;
+
+void *process(void *id);
+int main()
+{
+	sem_init(&weighting,0,1);
+	sem_init(&checking,0,1);
+	sem_init(&boarding,0,1);
+	int total_customers=10;
+	int cus_id[total_customers];
+	pthread_t customers[10];
+	for(int i=0;i<total_customers;i++)
+	{
+		cus_id[i]=i;
+		pthread_create(&customers[i],0,process,(void*)&cus_id[i]);	
+	}
+	
+	for(int i=0;i<total_customers;i++)
+	{
+		pthread_join(customers[i],0);
+	}
+}
+void * process(void *id)
+{
+	int *pid=(int*)id;
+	
+	printf("I am %d Waiting\n",*pid);
+	sem_wait(&weighting);
+		sleep(1);
+		printf("I am %d Weighting Luggage\n",*pid);
+	sem_post(&weighting);
+	
+	sem_wait(&checking);
+		sleep(1);
+		printf("I am %d Checking Luggage\n",*pid);
+	sem_post(&checking);
+	
+	sem_wait(&boarding);
+		sleep(1);
+		printf("I am %d Boarding\n",*pid);
+	sem_post(&boarding);
+	
+}

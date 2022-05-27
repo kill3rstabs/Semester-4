@@ -1,0 +1,92 @@
+==============================================
+		Question 1
+==============================================
+#! /bin/bash
+echo "This is program for creating 1000 .jpeg files"
+cd myprograms
+for((i=0;$i<1000;((i++))))
+do
+	fallocate -l $((5*1024*1024)) $i.txt
+done
+==============================================
+		Question 2
+==============================================
+#! /bin/bash
+cd myprograms
+for((i=0;$i<1000;i++))
+do
+	mv $i.jpg $i.jpeg 
+done
+
+==============================================
+		Question 3
+==============================================
+find -type f -name "*.sh" -size +5k -ls
+
+==============================================
+		Question 4
+==============================================
+#! /bin/bash
+cd myprograms
+for((i=0;$i<1000;((i++))))
+do
+	mv $i.jpeg ../notmyprograms
+
+done
+
+==============================================
+		Question 5
+==============================================
+#! /bin/bash
+ls -al
+==============================================
+		Question 9
+==============================================
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <stdlib.h>
+int main(){
+	int id1=fork();
+	if(id1==0){
+		sleep(1);
+		printf("\nWise Son!\n");
+		return 16;
+	}
+	else{
+		wait(NULL);
+		printf("\nfirst child has exited\n");
+		int id2=fork();
+		if(id2==0){
+			printf("\nSimple Son!\n");
+			execlp("/bin/sh","/bin/sh","-c","cat /sys/class/net/*/address",NULL);
+			return 17;
+		}
+		wait(NULL);
+		printf("\nsecond child has exited\n");
+		int id3=fork();
+		if(id3==0){
+			printf("\nWicked Son!\n");
+			sleep(7);
+			execlp("/bin/sh","/bin/sh","-c","date","date",NULL);
+			return 20;
+		}
+		wait(NULL);
+		printf("\nThird child has exited\n");
+		int id4=fork();
+		if(id4==0){
+			printf("\nSon Who Doesn't Know How to Ask Questions!\n");
+			printf("Grand parent id:");	
+			return 0;	
+		}
+		wait(NULL);
+		printf(" %d",getppid());
+		printf("\nFourth child has exited\n");
+	}
+
+
+
+	return 0;
+}
+
